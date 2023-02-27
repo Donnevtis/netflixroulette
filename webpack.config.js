@@ -5,6 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ReactRefreshTypeScript = require('react-refresh-typescript');
 
 const isDevMode = process.env.NODE_ENV !== 'production';
 const publicPath = (dest) => path.resolve(__dirname, `public/${dest}`);
@@ -68,7 +70,8 @@ module.exports = {
       extensions: ['js', 'ts', 'tsx'],
     }),
     new ForkTsCheckerWebpackPlugin({ typescript: { configFile: '../tsconfig.json' } }),
-  ],
+    isDevMode && new ReactRefreshWebpackPlugin(),
+  ].filter(Boolean),
   module: {
     rules: [
       {
@@ -103,6 +106,9 @@ module.exports = {
               loader: 'ts-loader',
               options: {
                 transpileOnly: true,
+                getCustomTransformers: () => ({
+                  before: [isDevMode && ReactRefreshTypeScript()].filter(Boolean),
+                }),
               },
             }
           : { loader: 'ts-loader' },

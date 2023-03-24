@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { Formik, Form, FormikHelpers } from 'formik';
 import useHandleClose from '@src/hooks/useHandleClose';
 import { useAppDispatch } from '@src/hooks/redux';
@@ -14,7 +14,7 @@ import Button from '../common/Button/Button';
 const INITIAL_VALUES = {};
 
 const DeleteForm = () => {
-  const { id } = useParams();
+  const id = useRouter().query.slug?.[2];
   const handleClose = useHandleClose();
   const dispatch = useAppDispatch();
 

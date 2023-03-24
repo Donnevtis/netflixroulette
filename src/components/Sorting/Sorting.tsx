@@ -1,11 +1,10 @@
 import React from 'react';
 import useToggle from '@src/hooks/useToggle';
 import { SORT_BY_FILTERS } from '@src/utils/constants';
-import { SortQueries, RootState, SEARCH_PARAMS } from '@src/types/';
-import { selectSortBy } from '@src/store/selectors/movies.selectors';
+import { SortQueries, SEARCH_PARAMS } from '@src/types/';
+
 import useQueryString from '@src/hooks/useQueryString';
 
-import { connect } from 'react-redux';
 import styles from './Sorting.module.scss';
 import { SortingProps } from './Sorting.types';
 
@@ -53,6 +52,4 @@ const Sorting = ({ selected }: SortingProps) => {
   );
 };
 
-const mapStateToProps = (state: RootState) => ({ selected: selectSortBy(state) });
-
-export default connect(mapStateToProps)(Sorting);
+export default Sorting;

@@ -1,16 +1,17 @@
 import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
+import { renderWithRouter } from '@src/utils/test-utils';
 import '@testing-library/jest-dom';
-import { renderWithRouterAndStore } from '@src/utils/test-utils';
 import useQueryString from '@src/hooks/useQueryString';
 import Header from './Header';
 
 jest.mock('@src/hooks/useQueryString');
+
 const mockedSetQueryParams = jest.spyOn({ useQueryString }, 'useQueryString');
 
 describe('Header', () => {
   test('should render a search panel', async () => {
-    const { container } = renderWithRouterAndStore(<Header />);
+    const { container } = renderWithRouter(<Header query="" />);
     expect(container).toMatchSnapshot();
   });
 
@@ -18,7 +19,7 @@ describe('Header', () => {
     const setQueryParams = jest.fn();
     mockedSetQueryParams.mockReturnValue(setQueryParams);
 
-    renderWithRouterAndStore(<Header />);
+    renderWithRouter(<Header query="" />);
 
     fireEvent.input(screen.getByRole('textbox'), {
       target: { value: 'matrix' },

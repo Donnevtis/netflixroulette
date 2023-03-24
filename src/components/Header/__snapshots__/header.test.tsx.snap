@@ -2,34 +2,47 @@
 
 exports[`Header should render a search panel 1`] = `
 <div>
-  <header>
-    <div>
-      <span>
+  <header
+    class="header"
+  >
+    <div
+      class="topWrapper"
+    >
+      <span
+        class="title"
+      >
         <b>
           netflix
         </b>
         roulette
       </span>
       <button
-        class=""
+        class="root ghost sm"
         type="button"
       >
         + ADD MOVIE
       </button>
     </div>
-    <form>
-      <fieldset>
-        <legend>
+    <form
+      class="searchForm"
+    >
+      <fieldset
+        class="searchForm__fieldset"
+      >
+        <legend
+          class="searchForm__label"
+        >
           FIND YOUR MOVIE
         </legend>
         <input
+          class="searchInput"
           data-test="search-input"
           placeholder="What do you want to watch?"
           type="text"
           value=""
         />
         <button
-          class=""
+          class="root primary lg"
           data-test="search-button"
           type="submit"
         >

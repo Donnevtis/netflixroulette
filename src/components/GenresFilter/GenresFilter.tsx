@@ -1,14 +1,12 @@
 import React from 'react';
 import useQueryString from '@src/hooks/useQueryString';
 import { GENRE_FILTERS } from '@src/utils/constants';
-import { GenreQueries, RootState, SEARCH_PARAMS } from '@src/types/';
-import { connect } from 'react-redux';
-import { selectGenre } from '@src/store/selectors/movies.selectors';
+import { GenreQueries, SEARCH_PARAMS } from '@src/types/';
 
-import { GenreFilterProps } from './GenresFilter.types';
 import styles from './GenresFilter.module.scss';
 
 import GenreButton from './GenreButton/GenreButton';
+import { GenreFilterProps } from './GenresFilter.types';
 
 const GenresFilter = ({ selected }: GenreFilterProps) => {
   const setQueryString = useQueryString();
@@ -33,6 +31,4 @@ const GenresFilter = ({ selected }: GenreFilterProps) => {
   );
 };
 
-const mapStateToProps = (state: RootState) => ({ selected: selectGenre(state) });
-
-export default connect(mapStateToProps)(GenresFilter);
+export default GenresFilter;

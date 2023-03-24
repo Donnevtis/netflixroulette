@@ -1,5 +1,5 @@
 describe('root path verify', () => {
-  beforeEach(() => cy.visit('http://localhost:8080'));
+  beforeEach(() => cy.visit('http://localhost:3000'));
 
   it('default movies results count equal 15', () => {
     cy.getByData('movie-card').should('have.length', 15);

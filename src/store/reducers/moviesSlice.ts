@@ -27,6 +27,9 @@ const moviesSlice = createSlice({
     updateMovie({ movies }, { payload }: PayloadAction<Movie>) {
       movies[findIndexById(movies, payload.id)] = payload;
     },
+    updateMovies(state, { payload }: PayloadAction<Movie[]>) {
+      state.movies = payload;
+    },
     deleteMovie({ movies }, { payload }: PayloadAction<number>) {
       movies.splice(findIndexById(movies, payload), 1);
     },

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { useSelector } from 'react-redux';
 import { BaseMovie, RootState } from '@src/types';
@@ -20,7 +20,8 @@ import Button from '../common/Button/Button';
 const { ERROR, SUCCESS, INITIAL } = STATUSES;
 
 const EditorForm = ({ action, variant: { successMessage, legend } }: EditorFormProps) => {
-  const { id } = useParams();
+  const id = useRouter().query.slug?.[2];
+
   const initialMovie =
     useSelector(({ movies: { movies } }: RootState) =>
       movies.find((movie) => movie.id === Number(id)),

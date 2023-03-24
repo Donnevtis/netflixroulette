@@ -97,8 +97,8 @@ export enum PATHS {
   REST = '*',
   ROOT = '/',
   SEARCH = '/search',
-  MOVIE = '/search/movie',
-  MOVIE_ADD = '/search/movie/add',
-  MOVIE_EDIT = '/search/movie/edit/:id',
-  MOVIE_DELETE = '/search/movie/delete/:id',
+  MOVIE = '/movie',
+  MOVIE_ADD = '/movie/add',
+  MOVIE_EDIT = '/movie/edit/',
+  MOVIE_DELETE = '/movie/delete/',
 }

@@ -1,9 +1,8 @@
-import { PATHS } from '@src/types';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 const useHandleClose = () => {
-  const navigate = useNavigate();
-  return () => navigate(PATHS.SEARCH);
+  const router = useRouter();
+  return () => router.back();
 };
 
 export default useHandleClose;

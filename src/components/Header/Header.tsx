@@ -1,9 +1,7 @@
 import React, { SyntheticEvent, useRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { PATHS, RootState, SEARCH_PARAMS } from '@src/types';
+import { useRouter } from 'next/router';
+import { PATHS, SEARCH_PARAMS } from '@src/types';
 import useQueryString from '@src/hooks/useQueryString';
-import { connect } from 'react-redux';
-import { selectQuery } from '@src/store/selectors/movies.selectors';
 import { HeaderProps } from './Header.types';
 import styles from './Header.module.scss';
 
@@ -12,11 +10,17 @@ import Button from '../common/Button/Button';
 
 const Header = ({ query }: HeaderProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const {
+    query: { slug, ...queryRest },
+  } = router;
+
   const setQueryString = useQueryString();
 
-  const handleClick = () => navigate(PATHS.MOVIE_ADD, { state: { backgroundLocation: location } });
+  const handleClick = () =>
+    router.push({ pathname: PATHS.MOVIE_ADD, query: queryRest }, PATHS.MOVIE_ADD, {
+      scroll: false,
+    });
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -61,6 +65,4 @@ const Header = ({ query }: HeaderProps) => {
   );
 };
 
-const mapStateToProps = (state: RootState) => ({ query: selectQuery(state) });
-
-export default connect(mapStateToProps)(Header);
+export default Header;

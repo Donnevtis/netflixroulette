@@ -1,5 +1,5 @@
 import API from '@src/api/api';
-import { BaseMovie, RequestParams } from '@src/types';
+import { BaseMovie, Movie, RequestParams } from '@src/types';
 import { selectRequestParams } from '../selectors/movies.selectors';
 import { actions } from '../reducers/moviesSlice';
 import { AppDispatch, RootState } from '..';
@@ -26,6 +26,9 @@ export const updateMovie = (movie: BaseMovie) => (dispatch: AppDispatch) =>
     .then((response) => {
       dispatch(actions.updateMovie(response));
     });
+
+export const updateMovies = (movies: Movie[]) => (dispatch: AppDispatch) =>
+  dispatch(actions.updateMovies(movies));
 
 export const deleteMovie = (id: number) => (dispatch: AppDispatch) =>
   API.delete.request(id).then(() => {

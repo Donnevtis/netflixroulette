@@ -1,11 +1,25 @@
-import { useSearchParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 const useQueryString = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const router = useRouter();
+  const {
+    query: { slug, ...query },
+  } = router;
 
   return (key: string, value: string) => {
-    searchParams.set(key, value);
-    setSearchParams(searchParams);
+    const as = new URLSearchParams();
+
+    if (value) {
+      as.set(key, value);
+    }
+
+    router.push(
+      { pathname: '/search', query: { ...query, [key]: value } },
+      `/search?${as.toString()}`,
+      {
+        scroll: false,
+      },
+    );
   };
 };
 

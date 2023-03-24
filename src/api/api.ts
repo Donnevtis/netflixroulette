@@ -26,7 +26,8 @@ const API = {
 
         return response.json();
       })
-      .then(({ data }) => data);
+      .then(({ data }) => data)
+      .catch(() => []);
   },
 
   send(method: 'PUT' | 'POST') {

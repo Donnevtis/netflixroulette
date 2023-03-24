@@ -7,7 +7,7 @@
 }
 
 .date {
-  @apply bg-[url('@src/assets/icons/calendar.svg')] bg-[center_right_0.9rem] bg-no-repeat;
+  @apply bg-[url('/icons/calendar.svg')] bg-[center_right_0.9rem] bg-no-repeat;
 }
 
 .date::-webkit-inner-spin-button {

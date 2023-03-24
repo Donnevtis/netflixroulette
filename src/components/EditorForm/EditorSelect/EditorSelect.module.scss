@@ -7,7 +7,7 @@
     @include mixins.input;
     width: 100%;
     text-align: start;
-    background-image: url('@src/assets/icons/chevron_down_big.svg');
+    background-image: url('/icons/chevron_down_big.svg');
     background-repeat: no-repeat;
     background-position: 97% center;
     padding-right: 40px;
@@ -15,7 +15,7 @@
 
     &_open {
       @extend .dropDown__btn;
-      background-image: url('@src/assets/icons/chevron_up_big.svg');
+      background-image: url('/icons/chevron_up_big.svg');
     }
   }
   &__list {
@@ -48,7 +48,7 @@
 
     &:checked + .dropDown__label::before {
       background-color: #f65261;
-      background-image: url('@src/assets/icons/indicator.svg');
+      background-image: url('/icons/indicator.svg');
       border: none;
     }
   }

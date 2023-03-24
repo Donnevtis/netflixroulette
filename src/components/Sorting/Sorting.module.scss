@@ -23,7 +23,7 @@
   background-color: transparent;
   outline: none;
   text-transform: uppercase;
-  background-image: url('@src/assets/icons/chevron_down.svg');
+  background-image: url('/icons/chevron_down.svg');
   background-repeat: no-repeat;
   background-position: 97% center;
   padding-right: 25px;
@@ -31,7 +31,7 @@
 
   &_show {
     @extend .dropDown__select;
-    background-image: url('@src/assets/icons/chevron_up.svg');
+    background-image: url('/icons/chevron_up.svg');
   }
   &:hover {
     color: #ffffffa6;
